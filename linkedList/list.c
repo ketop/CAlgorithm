@@ -62,7 +62,7 @@ int list_ins_next(List *list, ListElmt *element, const void *data)
         {
             list->tail = new_element;
         }
-        new_element = element->next;
+        new_element->next = element->next;
         element->next = new_element;
     }
     list->size++;
