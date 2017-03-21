@@ -44,7 +44,7 @@ int set_union(Set *setu, const Set *set1, const Set *set2)
 
     set_init(setu, set1->match, NULL);
 
-    for(member = list_head(set); member != NULL; member = list_next(member))
+    for(member = list_head(set1); member != NULL; member = list_next(member))
     {
         data = list_data(member);
         if(list_ins_next(setu, list_tail(setu), data) != 0)

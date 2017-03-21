@@ -13,6 +13,8 @@ int main()
     }
     for(i = 0; i < 10; ++i)
     {
+
+        save = (int *)queue_peek(&queue);
         queue_dequeue(&queue, (void **)&save);
         printf("%d\n",*((int *)save));
     }

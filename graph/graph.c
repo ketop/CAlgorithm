@@ -7,6 +7,8 @@
 #include "set.h"
 
 
+//match 顶点匹配函数 匹配返回1,否则返回0
+//destroy 顶点销毁函数
 
 void graph_init(Graph *graph, int (*match)(const void *key1, const void *key2), void(*destroy)(void *data))
 {
@@ -33,7 +35,8 @@ void graph_destroy(Graph *graph)
             set_destroy(&adjlist->adjacent);
             /* 调用顶点的销毁函数 */
             if(graph->destroy != NULL)
-                graph_destroy(adjlist->vertex);
+                /* destroy函数用于销毁顶点 */
+                graph->destroy(adjlist->vertex);
             /* 清除adjlist指向的对象 */
             free(adjlist);
         }
@@ -71,6 +74,9 @@ int graph_ins_vertex(Graph *graph, const void *data)
 }
 
 /* 在插入边之前顶点必须已经存在 */
+/* 将顶点加入到邻接表中，图表和邻接表都存着唯一顶点的信息，这种数据组织结构，如果将权重加入到顶点结构中
+   很难管理，特别是当某个顶点入度大于1时，权重很容易被修改，邻接表的顶点最好另外定义数据结构。
+*/
 int graph_ins_edge(Graph *graph, const void *data1, const void *data2)
 {
     ListElmt *element;

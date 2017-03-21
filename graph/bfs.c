@@ -6,6 +6,7 @@
 #include "list.h"
 #include "queue.h"
 
+
 /* 广度优先算法 */
 /*在图中，从start节点开始访问，将能够访问到的节点存入hops链表中,
  *至于到特定节点的访问路径则无法详细给出
@@ -60,7 +61,7 @@ int bfs(Graph *graph, BfsVertex *start, List *hops)
     while(queue_size(&queue) > 0)
     {
         /* 获得队列首部元素，并没有从队列中删除该元素 */
-        adjlist = queue_peek(&queue);
+        adjlist = (AdjList *)queue_peek(&queue);
         /* 遍历该顶点的邻接顶点 */
         for(member = list_head(&adjlist->adjacent); member != NULL; member = list_next(member))
         {
