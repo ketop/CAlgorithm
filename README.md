@@ -1,5 +1,5 @@
 # CAlgorithm
-to make reused code, reference: Mastering algorithms with C
+*to make reused code, reference: Mastering algorithms with C*
 
 
 > all codes from referrence books.
