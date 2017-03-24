@@ -6,7 +6,6 @@ to make reused code, reference: Mastering algorithms with C
 some errors maybe exits, welcome to issue.
 
 
-
 ### Structures
 
 - linkedlist
