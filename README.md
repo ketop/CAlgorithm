@@ -2,7 +2,7 @@
 *to make reused code, reference: Mastering algorithms with C*
 
 
-> all codes from referrence books.
+> all codes from referrence book.
 some errors maybe exits, welcome to issue.
 
 
