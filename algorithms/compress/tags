@@ -1,0 +1,87 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BITREE_H	bitree.h	2;"	d
+BITS_H	bits.h	2;"	d
+BiTree	bitree.h	/^}BiTree;$/;"	t	typeref:struct:BiTree_
+BiTreeNode	bitree.h	/^}BiTreeNode;$/;"	t	typeref:struct:BiTreeNode_
+BiTreeNode_	bitree.h	/^typedef struct BiTreeNode_ {$/;"	s
+BiTree_	bitree.h	/^typedef struct BiTree_ {$/;"	s
+COMPRESS_H	compress.h	2;"	d
+HEAP_H	heap.h	2;"	d
+Heap	heap.h	/^} Heap;$/;"	t	typeref:struct:Heap_
+Heap_	heap.h	/^typedef struct Heap_ {$/;"	s
+HuffCode	compress.h	/^} HuffCode;$/;"	t	typeref:struct:HuffCode_
+HuffCode_	compress.h	/^typedef struct HuffCode_{$/;"	s
+HuffNode	compress.h	/^} HuffNode;$/;"	t	typeref:struct:HuffNode_
+HuffNode_	compress.h	/^typedef struct HuffNode_{$/;"	s
+LZ77_BUFFER_SIZE	compress.h	25;"	d
+LZ77_BUFLEN_BITS	compress.h	20;"	d
+LZ77_NEXT_BITS	compress.h	21;"	d
+LZ77_PHRASE_BITS	compress.h	28;"	d
+LZ77_SYNBOL_BITS	compress.h	31;"	d
+LZ77_TYPE_BITS	compress.h	18;"	d
+LZ77_WINDOW_SIZE	compress.h	24;"	d
+LZ77_WINOFF_BITS	compress.h	19;"	d
+PQUEUE_H	pqueue.h	2;"	d
+PQueue	pqueue.h	/^typedef Heap PQueue;$/;"	t
+bit_get	bits.c	/^int bit_get(const unsigned char *bits, int pos)$/;"	f
+bit_rot_left	bits.c	/^void bit_rot_left(unsigned char *bits, int size, int count)$/;"	f
+bit_set	bits.c	/^void bit_set(unsigned char *bits, int pos, int state)$/;"	f
+bit_xor	bits.c	/^void bit_xor(const unsigned char *bits1, const unsigned char *bits2, unsigned char *bitsx, int size)$/;"	f
+bitree_data	bitree.h	38;"	d
+bitree_destroy	bitree.c	/^void bitree_destroy(BiTree *tree)$/;"	f
+bitree_init	bitree.c	/^void bitree_init(BiTree *tree, void (*destroy)(void *data))$/;"	f
+bitree_ins_left	bitree.c	/^int bitree_ins_left(BiTree *tree, BiTreeNode *node, const void *data)$/;"	f
+bitree_ins_right	bitree.c	/^int bitree_ins_right(BiTree *tree, BiTreeNode *node, const void *data)$/;"	f
+bitree_is_eob	bitree.h	36;"	d
+bitree_is_leaf	bitree.h	37;"	d
+bitree_left	bitree.h	39;"	d
+bitree_merge	bitree.c	/^int bitree_merge(BiTree *merge, BiTree *left, BiTree *right, const void *data)$/;"	f
+bitree_rem_left	bitree.c	/^void bitree_rem_left(BiTree *tree, BiTreeNode *node)$/;"	f
+bitree_rem_right	bitree.c	/^void bitree_rem_right(BiTree *tree, BiTreeNode *node)$/;"	f
+bitree_right	bitree.h	40;"	d
+bitree_root	bitree.h	35;"	d
+bitree_size	bitree.h	34;"	d
+build_table	huffman.c	/^static void build_table(BiTreeNode *node, unsigned short code, unsigned char size, HuffCode *table)$/;"	f	file:
+build_tree	huffman.c	/^static int build_tree(int *freqs, BiTree **tree)$/;"	f	file:
+code	compress.h	/^    unsigned short code;$/;"	m	struct:HuffCode_
+compare	bitree.h	/^    int (*compare)(const void *key1, const void *key2);$/;"	m	struct:BiTree_
+compare	heap.h	/^    int (*compare)(const void *key1, const void *key2);$/;"	m	struct:Heap_
+compare_freq	huffman.c	/^static int compare_freq(const void *tree1, const void *tree2)$/;"	f	file:
+compare_win	lz77.c	/^static int compare_win(const unsigned char *window, const unsigned char *buffer, int *offset, unsigned char *next)$/;"	f	file:
+data	bitree.h	/^    void *data;$/;"	m	struct:BiTreeNode_
+destroy	bitree.h	/^    void (*destroy)(void *data);$/;"	m	struct:BiTree_
+destroy	heap.h	/^    void (*destroy)(void *data);$/;"	m	struct:Heap_
+destroy_tree	huffman.c	/^static void destroy_tree(void *tree)$/;"	f	file:
+freq	compress.h	/^    int freq;$/;"	m	struct:HuffNode_
+heap_destroy	heap.c	/^void heap_destroy(Heap *heap)$/;"	f
+heap_extract	heap.c	/^int heap_extract(Heap *heap, void **data)$/;"	f
+heap_init	heap.c	/^void heap_init(Heap *heap, int (*compare)(const void *key1, const void *key2), void (*destroy)(void *data))$/;"	f
+heap_insert	heap.c	/^int heap_insert(Heap *heap, const void *data)$/;"	f
+heap_left	heap.c	9;"	d	file:
+heap_parent	heap.c	8;"	d	file:
+heap_right	heap.c	10;"	d	file:
+heap_size	heap.h	20;"	d
+huffman_compress	huffman.c	/^int huffman_compress(const unsigned char *original, unsigned char **compressed, int size)$/;"	f
+huffman_uncompress	huffman.c	/^int huffman_uncompress(const unsigned char *compressed, unsigned char **original)$/;"	f
+left	bitree.h	/^    struct BiTreeNode_ *left;$/;"	m	struct:BiTreeNode_	typeref:struct:BiTreeNode_::BiTreeNode_
+lz77_compress	lz77.c	/^int lz77_compress(const unsigned char *original, unsigned char **compressed, int size)$/;"	f
+lz77_uncompress	lz77.c	/^int lz77_uncompress(const unsigned char *compressed, unsigned char **original)$/;"	f
+pqueue_destroy	pqueue.h	9;"	d
+pqueue_extract	pqueue.h	11;"	d
+pqueue_init	pqueue.h	8;"	d
+pqueue_insert	pqueue.h	10;"	d
+pqueue_peek	pqueue.h	12;"	d
+pqueue_size	pqueue.h	14;"	d
+right	bitree.h	/^    struct BiTreeNode_ *right;$/;"	m	struct:BiTreeNode_	typeref:struct:BiTreeNode_::BiTreeNode_
+root	bitree.h	/^    BiTreeNode *root;$/;"	m	struct:BiTree_
+size	bitree.h	/^    int size;$/;"	m	struct:BiTree_
+size	compress.h	/^    unsigned char size;$/;"	m	struct:HuffCode_
+size	heap.h	/^    int size;$/;"	m	struct:Heap_
+symbol	compress.h	/^    unsigned char symbol;$/;"	m	struct:HuffNode_
+tree	heap.h	/^    void **tree;$/;"	m	struct:Heap_
+used	compress.h	/^    unsigned char used;$/;"	m	struct:HuffCode_
