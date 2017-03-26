@@ -14,3 +14,5 @@ some errors maybe exits, welcome to issue.
 
 ### Algorithms
 - sort
+- numerical methods
+- data compress
