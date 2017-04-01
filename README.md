@@ -16,3 +16,4 @@ some errors maybe exits, welcome to issue.
 - sort
 - numerical methods
 - data compress
+- data encrypt
