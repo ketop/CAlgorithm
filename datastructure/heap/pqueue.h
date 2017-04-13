@@ -5,6 +5,7 @@
 
 typedef Heap PQueue;
 
+//注意函数的宏定义
 #define pqueue_init heap_init
 #define pqueue_destroy heap_destroy
 #define pqueue_insert heap_insert

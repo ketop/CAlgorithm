@@ -18,6 +18,7 @@ void heap_init(Heap *heap, int (*compare)(const void *key1, const void *key2), v
     return;
 }
 
+//destroy函数
 void heap_destroy(Heap *heap)
 {
     int i;
@@ -33,7 +34,7 @@ void heap_destroy(Heap *heap)
     return;
 }
 
-
+//插入值
 int heap_insert(Heap *heap, const void *data)
 {
     void *temp;
@@ -47,10 +48,12 @@ int heap_insert(Heap *heap, const void *data)
     {
         heap->tree = temp;
     }
+//    将其放在heap的最后
     heap->tree[heap_size(heap)] = (void *)data;
 
     ipos = heap_size(heap);
     ppos = heap_parent(ipos);
+//    不断与父节点比较
     while(ipos > 0 && heap->compare(heap->tree[ppos], heap->tree[ipos]) < 0)
     {
         temp = heap->tree[ppos];
@@ -62,7 +65,7 @@ int heap_insert(Heap *heap, const void *data)
     heap->size++;
     return 0;
 }
-
+//从堆中删除顶点
 int heap_extract(Heap *heap, void **data)
 {
     void *save,
@@ -73,9 +76,11 @@ int heap_extract(Heap *heap, void **data)
         mpos;
     if(heap_size(heap) == 0)
         return -1;
+//将顶点的数据存储在data
     *data = heap->tree[0];
-
+//将最后的元素存入save
     save = heap->tree[heap_size(heap) - 1];
+//调整heap的大小
     if(heap_size(heap) - 1 > 0)
     {
         if((temp = (void **)realloc(heap->tree, (heap_size(heap) - 1)*sizeof(void *))) == NULL)
@@ -95,7 +100,9 @@ int heap_extract(Heap *heap, void **data)
         heap->size = 0;
         return 0;
     }
+//将堆末尾元素放到堆顶
     heap->tree[0] = save;
+//从上往下调整
     ipos = 0;
     lpos = heap_left(ipos);
     rpos = heap_right(ipos);
