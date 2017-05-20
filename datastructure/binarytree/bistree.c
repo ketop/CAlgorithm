@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "bistree.h"
 
 
@@ -25,13 +26,19 @@ static void rotate_left(BiTreeNode **node)
         //node存储left的地址
         *node = left;
     }
-    else
+    else  //LR rotation
     {
+        // 取得left的右子节点为grandchild
         grandchild = bitree_right(left);
+        //将grandchild的左子节点放入到left的右子节点
         bitree_right(left) = bitree_left(grandchild);
+        //将grandchild的左侧放入left
         bitree_left(grandchild) = left;
+        /* 将grandchild的右侧放到node的左侧 */
         bitree_left(*node) = bitree_right(grandchild);
+        //将node放到grandchild的右侧
         bitree_right(grandchild) = *node;
+        //开始调整平衡因子，此时并未完成RL
         switch(((AvlNode *)bitree_data(grandchild))->factor) {
             case AVL_LFT_HEAVY:
                 ((AvlNode *)bitree_data(*node))->factor = AVL_RGT_HEAVY;
@@ -46,6 +53,7 @@ static void rotate_left(BiTreeNode **node)
                 ((AvlNode *)bitree_data(left))->factor = AVL_LFT_HEAVY;
                 break;
         }
+        //更改根节点
         ((AvlNode *)bitree_data(grandchild))->factor = AVL_BALANCED;
         *node = grandchild;
     }
@@ -60,7 +68,7 @@ static void rotate_right(BiTreeNode **node)
     //RR
     if(((AvlNode *)bitree_data(right))->factor == AVL_LFT_HEAVY)
     {
-        bitree_right(*node) = bitree_right(right);
+        bitree_right(*node) = bitree_left(right);
         bitree_left(right) = *node;
         ((AvlNode *)bitree_data(*node))->factor = AVL_BALANCED;
         ((AvlNode *)bitree_data(right))->factor = AVL_BALANCED;
@@ -167,6 +175,7 @@ static int insert(BisTree *tree, BiTreeNode **node, const void *data, int *balan
         cmpval = tree->compare(data, ((AvlNode *)bitree_data(*node))->data);
         if(cmpval < 0)
         {
+//            如果node的左侧空闲，则插入数据
             if(bitree_is_eob(bitree_left(*node)))
             {
                 if((avl_data = (AvlNode *)malloc(sizeof(AvlNode))) == NULL)
@@ -179,7 +188,7 @@ static int insert(BisTree *tree, BiTreeNode **node, const void *data, int *balan
                     return -1;
                 *balanced = 0;
             }
-            else
+            else //如果非空闲
             {
                 if((retval = insert(tree, &bitree_left(*node), data, balanced)) != 0)
                 {
@@ -333,11 +342,9 @@ void bistree_destroy(BisTree *tree)
 int bistree_remove(BisTree *tree, const void *data)
 {
     return hide(tree, bitree_root(tree), data);
-
 }
 
 int bistree_lookup(BisTree *tree, void **data)
 {
     return lookup(tree, bitree_root(tree), data);
-
 }

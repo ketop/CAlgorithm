@@ -96,7 +96,7 @@ void bitree_rem_left(BiTree *tree, BiTreeNode *node)
         position = &node->left;
     if(*position != NULL)
     {
-        /* 先递归删除子树中的所有元素 */
+    /* 先递归删除子树中的所有元素 */
         bitree_rem_left(tree, *position);
         bitree_rem_right(tree, *position);
 
@@ -105,7 +105,7 @@ void bitree_rem_left(BiTree *tree, BiTreeNode *node)
         {
             tree->destroy((*position)->data);
         }
-        /* 删除节点 */
+    /* 删除节点 */
         free(*position);
         *position = NULL;
         tree->size--;

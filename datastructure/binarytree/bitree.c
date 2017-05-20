@@ -39,6 +39,8 @@ int bitree_ins_left(BiTree *tree, BiTreeNode *node, const void *data)
             return -1;
         position = &node->left;
     }
+
+//从堆中申请内存
     if((new_node = (BiTreeNode *)malloc(sizeof(BiTreeNode))) == NULL)
         return -1;
 
@@ -82,7 +84,7 @@ int bitree_ins_right(BiTree *tree, BiTreeNode *node, const void *data)
     return 0;
 
 }
-/* 删除以node为父节点的左子树 */
+/* 删除以node为父节点的左子树,注意不是左子节点 */
 void bitree_rem_left(BiTree *tree, BiTreeNode *node)
 {
     BiTreeNode **position;
@@ -144,7 +146,7 @@ int bitree_merge(BiTree *merge, BiTree *left, BiTree *right, const void *data)
 {
     bitree_init(merge, left->destroy);
 
-    /* merge为空树，因此调用插入函数 */
+    /* merge为空树，因此调用插入函数，顶点存储数据data */
     if(bitree_ins_left(merge, NULL, data))
     {
         bitree_destroy(merge);

@@ -1,19 +1,19 @@
 #ifndef BITREE_H
 #define BITREE_H
 
-
+//树节点的结构体
 typedef struct BiTreeNode_ {
     void *data;
     struct BiTreeNode_ *left;
     struct BiTreeNode_ *right;
 }BiTreeNode;
 
-
+//树的结构体
 typedef struct BiTree_ {
-    int size;
-    int (*compare)(const void *key1, const void *key2);
-    void (*destroy)(void *data);
-    BiTreeNode *root;
+    int size;//每一个数据结构，特别是链表类的，定义size可以知道当前的元素总数
+    int (*compare)(const void *key1, const void *key2);//为二叉搜索树作准备的成员函数
+    void (*destroy)(void *data);//如果数据是动态申请的，则需要定义destroy函数来释放
+    BiTreeNode *root;//数的入口，即根节点
 }BiTree;
 
 
